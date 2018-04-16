@@ -1,14 +1,4 @@
 ---
-- name: Replace global nginx config with clean (hostless) default
-  copy:
-    src: '{{ item }}'
-    dest: /etc/nginx/nginx.conf
-    owner: root
-    group: root
-    mode: 0644
-  with_fileglob:
-    - 'files/nginx_hostless_{{ ansible_distribution }}.conf'
-  when: nginx_hostless_global_config
 
 - name: Create nginx config
   template:
@@ -22,6 +12,6 @@
   template:
     src: templates/uwsgi-vassal.ini.j2
     dest: '{{ uwsgi_dir }}/{{ app_name }}.ini'
-    owner: root
-    group: root
+    owner: {{ uid }}
+    group: uwsgi
     mode: 0644

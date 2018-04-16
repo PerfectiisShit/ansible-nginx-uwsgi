@@ -4,22 +4,24 @@
     path: '{{ base_dir }}'
     state: absent
 
-- name: Create a virtual environment
-  command: "{{ virtualenv_cmd }} '{{ base_dir }}'"
-
 - name: Clone Git repository
   git:
     repo: '{{ git_repo }}'
-    dest: '{{ appdata_dir }}'
+    dest: '{{ base_dir }}'
     version: '{{ git_branch }}'
 
 - name: Install requirements.txt
-  command: "'{{ base_dir }}/bin/pip' install -r '{{ appdata_dir }}/requirements.txt'"
+  command: "/bin/pip install -r '{{ base_dir }}/requirements.txt'"
 
 - name: Set permissions for base directory
   file:
-    path: '{{ base_dir }}'
+    path: '{{ appdata_dir }}'
     owner: '{{ uid }}'
     group: '{{ gid }}'
     state: directory
     recurse: yes
+
+- name: create nginx log directory
+  file:
+    path: /var/log/nginx/{{ app_name }}
+    state: directory
