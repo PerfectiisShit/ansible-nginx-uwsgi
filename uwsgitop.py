@@ -1,5 +1,14 @@
 #!/usr/bin/env python
 
+"""
+- Add more information to uwsgitop while reading the emperor socket
+- Separate online and offline vassals as per the return status of vassals
+- Add startup time for the online vassals, 
+    first failure time & last attempt time for the offline vassals
+      so that we can have more information to monitor both online & offline vassals
+- update: 2018-4-16 DX
+"""
+
 import argparse
 try:
     import urllib2
