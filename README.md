@@ -68,3 +68,18 @@ git_branch: master
 * uwsgi_env: Your custom uWSGI environment   
 * git_repo: The git repository which stores your application source code  
 * git_branch: The branch of the git repository your want to deploy  
+
+## uWSGI emperor configuration file
+[root@apps-dev-2837710 ansible-nginx-uwsgi]# cat /etc/uwsgi.ini
+[uwsgi]
+uid = uwsgi
+gid = uwsgi
+safe-pidfile = /run/uwsgi/emperor.pid
+emperor = /etc/uwsgi.d
+logto = /var/log/uwsgi/emperor.log
+touch-reload = true
+emperor-tyrant = true
+emperor-stats = /run/uwsgi/emperor-stats.sock
+cap = setgid,setuid
+
+
