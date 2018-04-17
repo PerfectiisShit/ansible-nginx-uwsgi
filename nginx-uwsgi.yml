@@ -1,6 +1,6 @@
 ---
 
-- hosts: host_name
+- hosts: all
   gather_facts: False
   become: yes
   become_user: root

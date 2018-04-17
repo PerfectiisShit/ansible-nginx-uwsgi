@@ -7,10 +7,11 @@ app_name: helloworld
 app_package: app
 app_callable: application
 base_dir: '{{ websites_dir }}/{{ app_name }}'
-appdata_dir: '{{ base_dir }}/src'
+appdata_dir: '{{ base_dir }}/flask-demo-app'
 nginx_server_name: 'localhost {{ app_name }}.local'
 nginx_http_port: 80
 uwsgi_module: '{{ app_package }}:{{ app_callable }}'
+uwsgi_plugins: python
 uwsgi_processes: 1
 uwsgi_threads: 1
 uwsgi_env: []

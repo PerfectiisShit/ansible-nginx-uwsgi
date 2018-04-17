@@ -11,11 +11,18 @@
     version: '{{ git_branch }}'
 
 - name: Install requirements.txt
-  command: "/bin/pip install -r '{{ base_dir }}/requirements.txt'"
+  command: "/bin/pip install -r '{{ appdata_dir }}/requirements.txt'"
+
+- name: Create user for application
+  user:
+    name: {{ uid }}
+    shell: /bin/bash
+    groups: {{ gid }}
+    append: yes
 
 - name: Set permissions for base directory
   file:
-    path: '{{ appdata_dir }}'
+    path: '{{ base_dir }}'
     owner: '{{ uid }}'
     group: '{{ gid }}'
     state: directory

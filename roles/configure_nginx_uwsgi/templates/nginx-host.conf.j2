@@ -1,6 +1,6 @@
 server {
 
-    listen 80;
+    listen {{ nginx_http_port }};
     server_name {{ nginx_server_name }};
     access_log /var/log/nginx/{{ app_name }}/access_log;
     error_log /var/log/nginx/{{ app_name }}/error_log;
