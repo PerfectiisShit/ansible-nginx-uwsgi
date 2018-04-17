@@ -19,6 +19,29 @@ helloworld2.com ansible_connection=local
 [root@apps-dev-2837710 ~]# cd host_vars
 [root@apps-dev-2837710 ~]# cp example helloworld2.com
 [root@apps-dev-2837710 ~]# vim helloworld2.com
+---
+uid: test3
+gid: test3
+packages:
+  - atop
+app_name: helloworld2
+app_package: flaskapp
+app_callable: application
+base_dir: '{{ websites_dir }}/{{ app_name }}'
+appdata_dir: '{{ base_dir }}'
+nginx_server_name: '{{ app_name }}.com'
+nginx_http_port: 80
+uwsgi_module: '{{ app_package }}:{{ app_callable }}'
+uwsgi_plugins: python
+uwsgi_processes: 1
+uwsgi_threads: 1
+uwsgi_env: []
+# Example for Django:
+# uwsgi_env:
+# - 'DJANGO_SETTINGS_MODULE={{ app_package }}.settings'
+git_repo: https://github.com/Kwpolska/flask-demo-app
+git_branch: master
+
 </pre>
 
 * Run the playbook
@@ -30,6 +53,7 @@ helloworld2.com ansible_connection=local
 ## Host variables referrence
 * uid: The username you want to use to run the application, ansible will create it if not exists  
 * gid: The group you want to use to run the application, ansible will create it if not exists  
+* packages: The os packages your application requires
 * app_name: Usually the top level of your domain name, for instance, helloworld2 of helloworld.com  
 * app_package: Your application file name  
 * app_callable: The app object in your application file  
