@@ -13,6 +13,11 @@
 - name: Install requirements.txt
   command: "/bin/pip install -r '{{ appdata_dir }}/requirements.txt'"
 
+- name: Ensure group exists
+  group:
+    name: '{{ gid }}'
+    state: present
+
 - name: Create user for application
   user:
     name: '{{ uid }}'
