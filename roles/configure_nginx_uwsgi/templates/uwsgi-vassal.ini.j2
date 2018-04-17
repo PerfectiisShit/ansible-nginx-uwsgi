@@ -1,5 +1,5 @@
 [uwsgi]
-socket = /run/uwsgi/uwsgi.sock
+socket = /run/uwsgi/%n.sock
 chmod-socket = 775
 chdir = {{ appdata_dir }}
 master = true
@@ -8,6 +8,7 @@ processes = {{ uwsgi_processes }}
 threads = {{ uwsgi_threads }}
 plugins = {{ uwsgi_plugins }}
 logto = /var/log/uwsgi/%n.log
+stats = /run/uwsgi/%n-stats.log
 {% for env in uwsgi_env %}
 env = {{ env }}
 {% endfor %}
