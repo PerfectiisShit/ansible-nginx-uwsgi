@@ -28,19 +28,19 @@ helloworld2.com ansible_connection=local
 
 
 ## Host variables referrence
-uid: The username you want to use to run the application, ansible will create it if not exists  
-gid: The group you want to use to run the application, ansible will create it if not exists  
-app_name: Usually the top level of your domain name, for instance, helloworld2 of helloworld.com  
-app_package: Your application file name  
-app_callable: The app object in your application file  
-base_dir: Your websites directory  
-appdata_dir: The directory to store your app soure code  
-nginx_server_name: Whatever domain you want to use  
-nginx_http_port: Nginx http port  
-uwsgi_module: Usually '{{ app_package }}:{{ app_callable }}'  
-uwsgi_plugins: uWSGI plugins your application requires  
-uwsgi_processes: The number of workes uWSGI will create  
-uwsgi_threads: The thread your application will generate  
-uwsgi_env: Your custom uWSGI environment   
-git_repo: The git repository which stores your application source code  
-git_branch: The branch of the git repository your want to deploy  
+* uid: The username you want to use to run the application, ansible will create it if not exists  
+* gid: The group you want to use to run the application, ansible will create it if not exists  
+* app_name: Usually the top level of your domain name, for instance, helloworld2 of helloworld.com  
+* app_package: Your application file name  
+* app_callable: The app object in your application file  
+* base_dir: Your websites directory  
+* appdata_dir: The directory to store your app soure code  
+* nginx_server_name: Whatever domain you want to use  
+* nginx_http_port: Nginx http port  
+* uwsgi_module: Usually '{{ app_package }}:{{ app_callable }}'  
+* uwsgi_plugins: uWSGI plugins your application requires  
+* uwsgi_processes: The number of workes uWSGI will create  
+* uwsgi_threads: The thread your application will generate  
+* uwsgi_env: Your custom uWSGI environment   
+* git_repo: The git repository which stores your application source code  
+* git_branch: The branch of the git repository your want to deploy  
