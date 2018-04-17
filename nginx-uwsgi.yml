@@ -4,6 +4,7 @@
   gather_facts: False
   become: yes
   become_user: root
+  any_errors_fatal: true
   roles:
      - install_packages
      - setup_app
