@@ -1,14 +1,14 @@
 ---
-uid: test
-gid: test
+uid: test3
+gid: test3
 packages:
-  - mysql_client
-app_name: helloworld
-app_package: app
+  - atop
+app_name: helloworld2
+app_package: flaskapp
 app_callable: application
 base_dir: '{{ websites_dir }}/{{ app_name }}'
-appdata_dir: '{{ base_dir }}/flask-demo-app'
-nginx_server_name: 'localhost {{ app_name }}.local'
+appdata_dir: '{{ base_dir }}'
+nginx_server_name: '{{ app_name }}.com'
 nginx_http_port: 80
 uwsgi_module: '{{ app_package }}:{{ app_callable }}'
 uwsgi_plugins: python
