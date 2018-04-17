@@ -70,6 +70,7 @@ git_branch: master
 * git_branch: The branch of the git repository your want to deploy  
 
 ## uWSGI emperor configuration file
+<pre>
 [root@apps-dev-2837710 ansible-nginx-uwsgi]# cat /etc/uwsgi.ini
 [uwsgi]
 uid = uwsgi
@@ -81,5 +82,5 @@ touch-reload = true
 emperor-tyrant = true
 emperor-stats = /run/uwsgi/emperor-stats.sock
 cap = setgid,setuid
-
+</pre>
 
